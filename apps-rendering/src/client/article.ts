@@ -275,7 +275,7 @@ hasSeenCards();
 richLinks();
 hydrateClickToView();
 void initSignupForms();
-
+console.log('init article.ts');
 /*
  We run this last to help precisely position native elements over their placeholders in the webview.
  For more detail see https://github.com/guardian/dotcom-rendering/pull/6047
