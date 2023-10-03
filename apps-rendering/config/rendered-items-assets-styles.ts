@@ -1,4 +1,4 @@
-export const renederedItemsAssetsCss = `
+export const renderedItemsAssetsCss = `
 @font-face {
   font-family: Guardian Text Egyptian Web;
   font-weight: 400;
