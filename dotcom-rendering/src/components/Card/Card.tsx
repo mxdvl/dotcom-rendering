@@ -359,6 +359,8 @@ export const Card = ({
 	 */
 	const hasBackgroundColour = !containerPalette && isMediaCard(format);
 
+	const isFlexibleContainer = containerType === 'flexible/special';
+
 	return (
 		<CardWrapper
 			format={format}
@@ -631,15 +633,33 @@ export const Card = ({
 									/>
 								</TrailTextWrapper>
 							)}
+							{!showCommentFooter && (
+								<CardFooter
+									format={format}
+									leftAlign={true}
+									topAlign={isFlexibleContainer}
+									age={decideAge()}
+									commentCount={<CommentCount />}
+									cardBranding={
+										branding ? (
+											<CardBranding
+												branding={branding}
+												format={format}
+												onwardsSource={onwardsSource}
+												containerPalette={
+													containerPalette
+												}
+											/>
+										) : undefined
+									}
+									showLivePlayable={showLivePlayable}
+								/>
+							)}
 						</div>
 
 						{/* This div is needed to push this content to the bottom of the card */}
 						<div
-							style={
-								isOnwardContent
-									? { marginTop: `${space[4]}px` }
-									: {}
-							}
+							style={isOnwardContent ? { marginTop: 'auto' } : {}}
 						>
 							{showLivePlayable && (
 								<Island
@@ -656,29 +676,6 @@ export const Card = ({
 										}
 									></LatestLinks>
 								</Island>
-							)}
-
-							{!showCommentFooter && (
-								<></>
-								// <CardFooter
-								// 	format={format}
-								// 	leftAlign={isOnwardContent}
-								// 	age={decideAge()}
-								// 	commentCount={<CommentCount />}
-								// 	cardBranding={
-								// 		branding ? (
-								// 			<CardBranding
-								// 				branding={branding}
-								// 				format={format}
-								// 				onwardsSource={onwardsSource}
-								// 				containerPalette={
-								// 					containerPalette
-								// 				}
-								// 			/>
-								// 		) : undefined
-								// 	}
-								// 	showLivePlayable={showLivePlayable}
-								// />
 							)}
 
 							{hasSublinks && sublinkPosition === 'inner' && (
@@ -714,7 +711,7 @@ export const Card = ({
 				{showCommentFooter && (
 					<CardFooter
 						format={format}
-						leftAlign={isOnwardContent}
+						leftAlign={true}
 						age={decideAge()}
 						commentCount={<CommentCount />}
 						cardBranding={

@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { type ArticleFormat, timeAgo } from '@guardian/libs';
-import { from, textSans12, textSansBold12 } from '@guardian/source/foundations';
-import { cardHasDarkBackground } from '../../../lib/cardHelpers';
+import { textSansBold12 } from '@guardian/source/foundations';
 import { palette } from '../../../palette';
 import ClockIcon from '../../../static/icons/clock.svg';
 import { DateTime } from '../../DateTime';
@@ -18,18 +17,9 @@ type Props = {
 	isTagPage: boolean;
 };
 
-const ageStyles = (format: ArticleFormat, isOnwardsContent?: boolean) => {
+const ageStyles = (isOnwardsContent?: boolean) => {
 	return css`
-		${textSans12};
-		/**
-		 * Typography preset styles should not be overridden.
-		 * This has been done because the styles do not directly map to the new presets.
-		 * Please speak to your team's designer and update this to use a more appropriate preset.
-		 */
-		line-height: 1.25;
-		${from.tablet} {
-			line-height: 1.15;
-		}
+		${textSansBold12};
 
 		color: ${isOnwardsContent
 			? palette('--card-footer-onwards-content')
@@ -45,10 +35,6 @@ const ageStyles = (format: ArticleFormat, isOnwardsContent?: boolean) => {
 			height: 11px;
 			width: 11px;
 			margin-right: 2px;
-		}
-
-		> time {
-			${cardHasDarkBackground(format) ? textSansBold12 : textSans12};
 		}
 	`;
 };
@@ -66,7 +52,7 @@ export const CardAge = ({
 	}
 
 	return (
-		<span css={ageStyles(format, isOnwardContent)}>
+		<span css={ageStyles(isOnwardContent)}>
 			{showClock && <ClockIcon />}
 			{isTagPage ? (
 				<DateTime
