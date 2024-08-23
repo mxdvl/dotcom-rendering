@@ -637,7 +637,10 @@ export const Card = ({
 								<CardFooter
 									format={format}
 									leftAlign={true}
-									topAlign={isFlexibleContainer}
+									topAlign={
+										isFlexibleContainer &&
+										imageSize === 'jumbo'
+									}
 									age={decideAge()}
 									commentCount={<CommentCount />}
 									cardBranding={
