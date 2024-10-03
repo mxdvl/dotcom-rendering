@@ -2,12 +2,12 @@ import { css } from '@emotion/react';
 import { breakpoints, space } from '@guardian/source/foundations';
 import type { ImgHTMLAttributes } from 'react';
 import React from 'react';
+import type { CardImageAspectRatio } from '../types/front';
 import type { ImageSizeType } from './Card/components/ImageWrapper';
 import type { ImageWidthType } from './Picture';
 import { generateSources, getFallbackSource } from './Picture';
 
 export type Loading = NonNullable<ImgHTMLAttributes<unknown>['loading']>;
-export type AspectRatio = '5:3' | '5:4';
 
 type Props = {
 	imageSize: ImageSizeType;
@@ -16,7 +16,7 @@ type Props = {
 	alt?: string;
 	roundedCorners?: boolean;
 	isCircular?: boolean;
-	aspectRatio?: AspectRatio;
+	aspectRatio?: CardImageAspectRatio;
 };
 
 /**
@@ -92,7 +92,7 @@ const block = css`
  * This is due to replace the existing card ratio of 5:3
  * For now, we are keeping both ratios.
  */
-const decideAspectRatioStyles = (aspectRatio: AspectRatio) => {
+const decideAspectRatioStyles = (aspectRatio: CardImageAspectRatio) => {
 	return css`
 		padding-top: ${aspectRatio === '5:4'
 			? `${(4 / 5) * 100}%`

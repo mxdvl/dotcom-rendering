@@ -1,6 +1,7 @@
 import type { Participations } from '@guardian/ab-core';
 import type { ArticleFormat, ConsentState } from '@guardian/libs';
 import { useCallback, useState } from 'react';
+import type { CardImageAspectRatio } from '../../types/front';
 import type { RenderingTarget } from '../../types/renderingTarget';
 import type {
 	ImagePositionType,
@@ -50,6 +51,7 @@ export type Props = {
 	imageSize: ImageSizeType;
 	imagePositionOnMobile: ImagePositionType;
 	renderingTarget: RenderingTarget;
+	posterImageAspectRatio: CardImageAspectRatio;
 };
 
 export const YoutubeAtom = ({
@@ -78,6 +80,7 @@ export const YoutubeAtom = ({
 	imageSize,
 	imagePositionOnMobile,
 	renderingTarget,
+	posterImageAspectRatio = '5:3',
 }: Props): JSX.Element => {
 	const [overlayClicked, setOverlayClicked] = useState<boolean>(false);
 	const [playerReady, setPlayerReady] = useState<boolean>(false);

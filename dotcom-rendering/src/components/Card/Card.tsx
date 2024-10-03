@@ -14,6 +14,7 @@ import { palette as themePalette } from '../../palette';
 import type { Branding } from '../../types/branding';
 import type { StarRating as Rating } from '../../types/content';
 import type {
+	CardImageAspectRatio,
 	DCRContainerPalette,
 	DCRContainerType,
 	DCRFrontImage,
@@ -26,7 +27,7 @@ import type { OnwardsSource } from '../../types/onwards';
 import { Avatar } from '../Avatar';
 import { CardCommentCount } from '../CardCommentCount.importable';
 import { CardHeadline } from '../CardHeadline';
-import type { AspectRatio, Loading } from '../CardPicture';
+import type { Loading } from '../CardPicture';
 import { CardPicture } from '../CardPicture';
 import { Island } from '../Island';
 import { LatestLinks } from '../LatestLinks.importable';
@@ -110,7 +111,7 @@ export type Props = {
 	showMainVideo?: boolean;
 	isTagPage?: boolean;
 	/** Alows the consumer to set an aspect ratio on the image of 5:3 or 5:4 */
-	aspectRatio?: AspectRatio;
+	aspectRatio?: CardImageAspectRatio;
 	/** Alows the consumer to use a larger font size group for boost styling*/
 	boostedFontSizes?: boolean;
 	index?: number;
@@ -605,6 +606,7 @@ export const Card = ({
 														: imageSize
 												}
 												enableAds={false}
+												aspectRatio={aspectRatio}
 											/>
 										</Island>
 									</div>

@@ -568,3 +568,9 @@ export type TreatType = {
 	 */
 	pageId?: string;
 };
+
+/** Card image aspect ratio
+ *
+ * @todo - we need to handle portrait 4:5 images
+ */
+export type CardImageAspectRatio = '5:3' | '5:4';
