@@ -2,7 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { discussionApiUrl } from '../../fixtures/manual/discussionApiUrl';
 import { trails } from '../../fixtures/manual/highlights-trails';
 import { FrontSection } from './FrontSection';
-import { ScrollableSmallContainer } from './ScrollableSmallContainer.importable';
+import {
+	ScrollableSmallContainer,
+	ScrollableSmallContainerControls,
+} from './ScrollableSmallContainer.importable';
 
 export default {
 	title: 'ScrollableSmallContainer',
@@ -28,6 +31,7 @@ export const WithFrontSection = {
 			discussionApiUrl={discussionApiUrl}
 			editionId={'UK'}
 			showTopBorder={false}
+			rightContent={<ScrollableSmallContainerControls />}
 		>
 			<ScrollableSmallContainer {...args} />
 		</FrontSection>

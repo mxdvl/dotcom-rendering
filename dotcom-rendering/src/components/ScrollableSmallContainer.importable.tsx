@@ -93,7 +93,8 @@ const verticalLineStyles = css`
 `;
 
 const buttonContainerStyles = css`
-	margin-left: auto;
+	margin-top: 6px;
+	/* margin-left: auto;
 	${from.tablet} {
 		margin-top: calc(
 			(-${titlePreset.fontSize} * ${titlePreset.lineHeight}) -
@@ -106,7 +107,7 @@ const buttonContainerStyles = css`
 	${from.wide} {
 		margin-left: ${space[2]}px;
 		margin-right: calc(${space[2]}px - ${gridColumnWidth} - ${gridGap});
-	}
+	} */
 `;
 
 const buttonLayoutStyles = css`
@@ -136,6 +137,50 @@ const generateCarouselColumnStyles = (totalCards: number) => {
 		}
 	`;
 };
+
+export const ScrollableSmallContainerControls = () => (
+	<div css={buttonContainerStyles}>
+		<Hide until={'tablet'}>
+			{/* {carouselLength > 2 && ( */}
+			<div css={buttonLayoutStyles}>
+				<Button
+					hideLabel={true}
+					iconSide="left"
+					icon={<SvgChevronLeftSingle />}
+					// onClick={() => scrollTo('left')}
+					priority="tertiary"
+					// TODO use better colour name
+					theme={{
+						borderTertiary: palette('--card-border-top'),
+						textTertiary: palette('--card-headline-trail-text'),
+					}}
+					// TODO
+					// aria-label="Move stories backwards"
+					// data-link-name="container left chevron"
+					size="small"
+				/>
+
+				<Button
+					hideLabel={true}
+					iconSide="left"
+					icon={<SvgChevronRightSingle />}
+					// onClick={() => scrollTo('right')}
+					priority="tertiary"
+					// TODO use better colour name
+					theme={{
+						borderTertiary: palette('--card-border-top'),
+						textTertiary: palette('--card-headline-trail-text'),
+					}}
+					// TODO
+					// aria-label="Move stories forwards"
+					// data-link-name="container right chevron"
+					size="small"
+				/>
+			</div>
+			{/* )} */}
+		</Hide>
+	</div>
+);
 
 /**
  * This is an island - todo
@@ -246,54 +291,6 @@ export const ScrollableSmallContainer = ({
 					);
 				})}
 			</ol>
-
-			<div css={buttonContainerStyles}>
-				<Hide until={'tablet'}>
-					{carouselLength > 2 && (
-						<div css={buttonLayoutStyles}>
-							<Button
-								hideLabel={true}
-								iconSide="left"
-								icon={<SvgChevronLeftSingle />}
-								onClick={() => scrollTo('left')}
-								priority="tertiary"
-								// TODO use better colour name
-								theme={{
-									borderTertiary:
-										palette('--card-border-top'),
-									textTertiary: palette(
-										'--card-headline-trail-text',
-									),
-								}}
-								// TODO
-								// aria-label="Move stories backwards"
-								// data-link-name="container left chevron"
-								size="small"
-							/>
-
-							<Button
-								hideLabel={true}
-								iconSide="left"
-								icon={<SvgChevronRightSingle />}
-								onClick={() => scrollTo('right')}
-								priority="tertiary"
-								// TODO use better colour name
-								theme={{
-									borderTertiary:
-										palette('--card-border-top'),
-									textTertiary: palette(
-										'--card-headline-trail-text',
-									),
-								}}
-								// TODO
-								// aria-label="Move stories forwards"
-								// data-link-name="container right chevron"
-								size="small"
-							/>
-						</div>
-					)}
-				</Hide>
-			</div>
 		</div>
 	);
 };
