@@ -35,6 +35,8 @@ type Props = {
 	/** A React component can be passed to be inserted inside the left column */
 	leftContent?: React.ReactNode;
 	children?: React.ReactNode;
+	/** A React component to be inserted inside the right column in place of the hide button */
+	rightContent?: React.ReactNode;
 	/** The string used to set the `data-component` Ophan attribute */
 	ophanComponentName?: string;
 	/** The string used to set the `data-link-name` Ophan attribute */
@@ -424,6 +426,7 @@ export const FrontSection = ({
 	description,
 	editionId,
 	leftContent,
+	rightContent,
 	ophanComponentLink,
 	ophanComponentName,
 	sectionId = '',
@@ -521,10 +524,14 @@ export const FrontSection = ({
 					{leftContent}
 				</div>
 
-				{isToggleable && (
+				{isToggleable && rightContent !== undefined && (
 					<div css={sectionShowHide}>
 						<ShowHideButton sectionId={sectionId} />
 					</div>
+				)}
+
+				{rightContent !== undefined && (
+					<div css={sectionShowHide}>{rightContent}</div>
 				)}
 
 				<div
