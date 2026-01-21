@@ -237,7 +237,8 @@ export const CardPicture = ({
 
 	const [viewTransitionName] = new URL(mainImage).pathname
 		.slice(1)
-		.split('/');
+		.split('/')
+		.map((part) => 'picture-' + part);
 
 	return (
 		<picture

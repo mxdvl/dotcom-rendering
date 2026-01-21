@@ -564,7 +564,10 @@ export const Picture = ({
 
 	const fallbackSource = getFallbackSource(sources);
 
-	const [viewTransitionName] = new URL(master).pathname.slice(1).split('/');
+	const [viewTransitionName] = new URL(master).pathname
+		.slice(1)
+		.split('/')
+		.map((part) => 'picture-' + part);
 
 	return (
 		<picture
