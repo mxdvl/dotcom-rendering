@@ -564,8 +564,16 @@ export const Picture = ({
 
 	const fallbackSource = getFallbackSource(sources);
 
+	const [viewTransitionName] = new URL(master).pathname.slice(1).split('/');
+
 	return (
-		<picture css={styles(format, isLightbox)}>
+		<picture
+			css={styles(format, isLightbox)}
+			style={{
+				// @ts-expect-error -- this is a valid property
+				viewTransitionName,
+			}}
+		>
 			{/* Immersive Main Media images get additional sources specifically for when in portrait orientation */}
 			{format.display === ArticleDisplay.Immersive && isMainMedia && (
 				<>

@@ -416,6 +416,7 @@ https://workforus.theguardian.com/careers/product-engineering/
                 ${scriptTags.join('\n')}
 				<style class="webfont">${minifiedFontsCss}</style>
                 <style>${resets.resetCSS}</style>
+                <style>@view-transition { navigation: auto; }</style>
 				${css}
 				<link rel="stylesheet" media="print" href="${ASSET_ORIGIN}static/frontend/css/print.css">
 

@@ -235,6 +235,10 @@ export const CardPicture = ({
 
 	const fallbackSource = getFallbackSource(sources);
 
+	const [viewTransitionName] = new URL(mainImage).pathname
+		.slice(1)
+		.split('/');
+
 	return (
 		<picture
 			data-size={imageSize}
@@ -245,6 +249,10 @@ export const CardPicture = ({
 					decideMobileAspectRatioStyles(mobileAspectRatio),
 				isCircular && circularStyles,
 			]}
+			style={{
+				// @ts-expect-error -- this is a valid property
+				viewTransitionName,
+			}}
 		>
 			{sources.map((source) => {
 				return (
